@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import one.digitalinnovation.gof.model.Cliente;
 import one.digitalinnovation.gof.service.ClienteService;
@@ -37,6 +38,12 @@ public class ClienteRestController {
 	public ResponseEntity<Cliente> buscarPorId(@PathVariable Long id) {
 		return ResponseEntity.ok(clienteService.buscarPorId(id));
 	}
+	@GetMapping("/clientes")
+	public ModelAndView listarClientes() {
+	    Iterable<Cliente> clientes = clienteService.buscarTodos();
+	    return new ModelAndView("clientes", "clientes", clientes);
+	}
+
 
 	@PostMapping
 	public ResponseEntity<Cliente> inserir(@RequestBody Cliente cliente) {

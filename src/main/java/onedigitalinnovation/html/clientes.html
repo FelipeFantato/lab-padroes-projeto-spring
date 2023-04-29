@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Lista de Clientes</title>
+    </head>
+    <body>
+        <h1>Lista de Clientes</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Endereço</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#clientes}}
+                <tr>
+                    <td>{{id}}</td>
+                    <td>{{nome}}</td>
+                    <td>{{endereco.logradouro}}, {{endereco.numero}} - {{endereco.bairro}}, {{endereco.cidade}}/{{endereco.uf}}</td>
+                </tr>
+                {{/clientes}}
+            </tbody>
+        </table>
+    </body>
+</html>
